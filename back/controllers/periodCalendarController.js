@@ -31,6 +31,28 @@ const getPeriodDay = (req, res, db) => {
 };
 
 const addPeriodDay = (req, res, db) => {
+	const { userID, 
+		date, 
+		isPeriod, 
+		flowLevel, 
+		mood, 
+		symptomsCramps, 
+		symptomsHeadache, 
+		symptomsNausea } = req.body;
+
+	db('period_calendar')
+	.insert({
+		date: date,
+	    user_id: userID,
+	    is_period: isPeriod,
+	    flow_level: flowLevel,
+	    mood: mood,
+	    symptoms_cramps: symptomsCramps,
+		symptoms_headache: symptomsHeadache,
+		symptoms_nausea: symptomsNausea,
+		})
+	.then(periods => { res.json(periods[0]); })
+	.catch(error => {res.status(400).json('error adding the period day')});
 };
 
 const deletePeriodDay = (req, res, db) => {

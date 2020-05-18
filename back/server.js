@@ -47,6 +47,9 @@ app.get('/peroidcalendar/:userid/:year/:month', (req, res) =>
 app.get('/peroidcalendar/:userid/:year/:month/:day', (req, res) => 
   { periodCalendarController.getPeriodDay(req, res, db) });
 
+app.post('/peroidcalendar/add', (req, res) => 
+  { periodCalendarController.addPeriodDay(req, res, db) })
+
 app.listen(3000, () => {
 	console.log('app is running');
 })
