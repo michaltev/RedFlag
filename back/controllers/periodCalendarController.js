@@ -56,6 +56,7 @@ const addPeriodDay = (req, res, db) => {
 };
 
 const deletePeriodDay = (req, res, db) => {
+	// needed??
 };
 
 module.exports = {
