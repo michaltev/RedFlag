@@ -41,6 +41,9 @@ app.get('/abusecategories', (req, res) =>
 app.get('/abusecategories/:parentid', (req, res) => 
   { res.json(globalController.getAbuseCategoriesByParent(db, req.params.parentid)) })
 
+app.get('/peroidcalendar/:userid/:monthyear', (req, res) => 
+  { periodCalendarController.getPeriodMonthList(req, res, db) });
+
 app.listen(3000, () => {
 	console.log('app is running');
 })
