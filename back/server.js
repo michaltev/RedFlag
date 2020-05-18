@@ -3,6 +3,9 @@ const cors = require('cors')
 const knex = require('knex')
 
 const usersController = require('./controllers/usersController');
+const globalController = require('./controllers/globalController');
+const eventsCalendarController = require('./controllers/eventsCalendarController');
+const periodCalendarController = require('./controllers/periodCalendarController');
 
 const db = knex({
   client: 'pg',
