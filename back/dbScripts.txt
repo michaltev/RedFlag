@@ -1,0 +1,67 @@
+CREATE TABLE users (
+    id serial PRIMARY KEY,
+    name VARCHAR(100),
+    email text UNIQUE NOT NULL,
+    join_date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE login (
+    id serial PRIMARY KEY,
+    hash VARCHAR(100),
+    email text UNIQUE NOT NULL
+);
+
+
+CREATE TABLE moods (
+    id serial PRIMARY KEY,
+    value text NOT NULL
+);
+
+CREATE TABLE abuse_categories(
+    id serial PRIMARY KEY,
+    parent integer not null,
+    foreign key (parent) references abuse_categories(id),
+    value text NOT NULL
+);
+
+
+CREATE TABLE period_calendar (
+    id serial PRIMARY KEY,
+    date DATE NOT NULL,
+    user_id INT NOT NULL,
+    is_period BOOLEAN NOT NULL,
+    flow_level INT,
+    mood INT,
+    symptoms_cramps BOOLEAN NOT NULL,
+	symptoms_headache BOOLEAN NOT NULL,
+	symptoms_nausea BOOLEAN NOT NULL,
+
+    foreign key (user_id) references users (id),
+    foreign key (mood) references moods (id)
+);
+
+
+CREATE TABLE events_calendar (
+    id serial PRIMARY KEY,
+    date DATE NOT NULL,
+    user_id INT NOT NULL,
+    mood INT NOT NULL,
+	abuse_category INT NOT NULL,
+	description text,
+	insert_date TIMESTAMP NOT NULL,
+	is_delete BOOLEAN NOT NULL,
+
+    foreign key (user_id) references users (id),
+    foreign key (mood) references moods (id),
+    foreign key (abuse_category) references abuse_categories (id)
+);
+
+
+CREATE TABLE attachments (
+    id serial PRIMARY KEY,
+    upload_date TIMESTAMP NOT NULL,
+    event_id INT NOT NULL,
+    file text NOT NULL, --to change the type to binery/large object
+
+    foreign key (event_id) references events_calendar (id)
+);
