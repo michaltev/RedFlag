@@ -33,6 +33,14 @@ app.post('/register', (req, res) => { usersController.handleRegister(req, res, d
 
 app.get('/profile/:id', (req, res) => { usersController.getUserProfile(req, res, db) });
 
+app.get('/moods', (req, res) => { res.json(globalController.getMoods(db)) })
+
+app.get('/abusecategories', (req, res) => 
+  { res.json(globalController.getParentAbuseCategories(db)) })
+
+app.get('/abusecategories/:parentid', (req, res) => 
+  { res.json(globalController.getAbuseCategoriesByParent(db, req.params.parentid)) })
+
 app.listen(3000, () => {
 	console.log('app is running');
 })
