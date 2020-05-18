@@ -17,6 +17,17 @@ const getPeriodMonthList = (req, res, db) => {
 };
 
 const getPeriodDay = (req, res, db) => {
+	const p_userID = req.params.userid;
+	const p_year = req.params.year;
+	const p_month = req.params.month;
+	const p_day = req.params.day;
+	const strDate = p_year+'-'+p_month+'-'+p_day;
+
+	db('period_calendar')
+	.select('*')
+	.where({user_id:p_userID, date:strDate})
+	.then(periods => { res.json(periods[0]); })
+	.catch(error => {res.status(400).json('error getting the period day')});
 };
 
 const addPeriodDay = (req, res, db) => {
