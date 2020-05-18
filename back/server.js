@@ -27,11 +27,15 @@ app.get('/', (req, res) => {
 	res.json('getting');
 });
 
+// users
+
 app.post('/signin', (req, res) => { usersController.handleSignin(req, res, db) });
 
 app.post('/register', (req, res) => { usersController.handleRegister(req, res, db) });
 
 app.get('/profile/:id', (req, res) => { usersController.getUserProfile(req, res, db) });
+
+// globals (moods + categories)
 
 app.get('/moods', (req, res) => { res.json(globalController.getMoods(db)) })
 
@@ -41,6 +45,8 @@ app.get('/abusecategories', (req, res) =>
 app.get('/abusecategories/:parentid', (req, res) => 
   { res.json(globalController.getAbuseCategoriesByParent(db, req.params.parentid)) })
 
+// period calendar
+
 app.get('/peroidcalendar/:userid/:year/:month', (req, res) => 
   { periodCalendarController.getPeriodMonthList(req, res, db) });
 
@@ -48,7 +54,11 @@ app.get('/peroidcalendar/:userid/:year/:month/:day', (req, res) =>
   { periodCalendarController.getPeriodDay(req, res, db) });
 
 app.post('/peroidcalendar/add', (req, res) => 
-  { periodCalendarController.addPeriodDay(req, res, db) })
+  { periodCalendarController.addPeriodDay(req, res, db) });
+
+// events calendar
+
+
 
 app.listen(3000, () => {
 	console.log('app is running');
