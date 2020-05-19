@@ -23,10 +23,6 @@ class Moods extends React.Component {
 	    	});
   	}
 
-	onMoodChoose = (value) => {
-		this.props.onChooseMood(value);
-	}
-
 	render(){
 		return (
 			<div>
@@ -39,7 +35,7 @@ class Moods extends React.Component {
 		                key={i} 
 		                mood={mood} 
 	                	isChosen={mood.id==this.props.chosenMood}
-		                onClick={this.onMoodChoose}
+		                onClick={this.props.onChooseMood}
 		                />
 		            );
 		          })

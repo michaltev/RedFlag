@@ -12,8 +12,6 @@ class EventsAddNew extends React.Component {
 	constructor(props){
 		super(props);
 
-		this.setMood = this.setMood.bind(this);
-
 		this.state = {
 			abuseCategories: [],
 			mood:"",
