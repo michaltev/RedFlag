@@ -1,4 +1,5 @@
 
 .Main {
     width: 100%;
+    min-height: inherit;
   }
