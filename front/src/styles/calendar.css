@@ -7,3 +7,21 @@
     border: none;
     width: 100%;
 }
+
+.Bad-event {
+    background-color: rgb(119, 213, 253) !important; 
+}
+
+.Event-verbal {
+    background-color: #A6E1FA !important; 
+}
+
+.Event-physical {
+    background-color: rgb(119, 213, 253) !important; 
+}
+.Event-mental {
+    background-color: rgb(66, 198, 255) !important; 
+}
+.Event-digital {
+    background-color: rgb(0, 175, 250) !important; 
+}
