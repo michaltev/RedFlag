@@ -11,18 +11,21 @@ import '../../App.css';
 class EventsAddNew extends React.Component {
 	constructor(props){
 		super(props);
+
+		this.setMood = this.setMood.bind(this);
+
 		this.state = {
 			abuseCategories: [],
-			mood:{},
+			mood:"",
 			description:"",
 			date:"",
 			userID:""
 		};
-	};
+	}
 
 	setMood = (p_moodID) => {
-		this.setState({chosenMood : p_moodID});
-	};
+		this.setState({mood : p_moodID});
+	}
 
 	handleAbuseCategoryClick = (p_abuseCategoryID) => {
 		let lstTempCategories = this.state.abuseCategories;
@@ -37,13 +40,13 @@ class EventsAddNew extends React.Component {
 		}
 
 		this.setState({abuseCategories : lstTempCategories});
-	};
+	}
 
     render() {
       return <div>
           <h2 className="Head-text">this is events add new</h2>  
 
-          <Moods />
+          <Moods chosenMood={this.state.mood} onChooseMood={this.setMood}/>
           <AbuseCategories/>
           <Media />
           <Notes />  

@@ -8,24 +8,23 @@ class Moods extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			moods: [],
-			chosenMood: {}
+			moods: []
 		};
 	}
 
 	componentDidMount(){
-	fetch('http://localhost:3000/moods', {
-          method: 'get',
-          headers: {'Content-Type':'application/json'}
-    })
-    .then(response => response.json())
-    .then(data => {
-        	this.setState({moods: data});
-    	});
-  }
+		fetch('http://localhost:3000/moods', {
+	          method: 'get',
+	          headers: {'Content-Type':'application/json'}
+	    })
+	    .then(response => response.json())
+	    .then(data => {
+	        	this.setState({moods: data});
+	    	});
+  	}
 
 	onMoodChoose = (value) => {
-		this.setState({chosenMood: value});
+		this.props.onChooseMood(value);
 	}
 
 	render(){
@@ -39,7 +38,7 @@ class Moods extends React.Component {
 		              <SingleMood
 		                key={i} 
 		                mood={mood} 
-	                	isChosen={mood.id==this.state.chosenMood}
+	                	isChosen={mood.id==this.props.chosenMood}
 		                onClick={this.onMoodChoose}
 		                />
 		            );
