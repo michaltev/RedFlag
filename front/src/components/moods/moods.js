@@ -6,13 +6,24 @@ class Moods extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			moods: props.moods,
-			chosenMode: {}
+			moods: [],
+			chosenMood: {}
 		};
 	}
 
+	componentDidMount(){
+	fetch('http://localhost:3000/moods', {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {
+        	this.setState({moods: data});
+    	});
+  }
+
 	onMoodChoose = (value) => {
-		this.setState({chosenMode: value});
+		this.setState({chosenMood: value});
 	}
 
 	render(){
@@ -25,7 +36,7 @@ class Moods extends React.Component {
 		              <SingleMood
 		                key={i} 
 		                mood={mood} 
-		                onMoodChoose={this.onMoodChoose}
+		                onClick={this.onMoodChoose}
 		                />
 		            );
 		          })
