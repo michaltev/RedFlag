@@ -50,14 +50,28 @@ app.get('/abusecategories/:parentid', (req, res) =>
 app.get('/peroidcalendar/:userid/:year/:month', (req, res) => 
   { periodCalendarController.getPeriodMonthList(req, res, db) });
 
-app.get('/peroidcalendar/:userid/:year/:month/:day', (req, res) => 
+app.get('/peroidcalendar/:periodid', (req, res) => 
   { periodCalendarController.getPeriodDay(req, res, db) });
 
 app.post('/peroidcalendar/add', (req, res) => 
   { periodCalendarController.addPeriodDay(req, res, db) });
 
+app.delete('/peroidcalendar/remove/:periodid', (req, res) => 
+  { periodCalendarController.deletePeriodDay(req, res, db) });
+
 // events calendar
 
+app.get('/eventscalendar/:userid/:year/:month', (req, res) => 
+  { eventsCalendarController.getEventsMonthList(req, res, db) });
+
+app.get('/eventscalendar/:eventid', (req, res) => 
+  { eventsCalendarController.getEvent(req, res, db) });
+
+app.post('/eventscalendar/add', (req, res) => 
+  { eventsCalendarController.addEvent(req, res, db) });
+
+app.delete('/eventscalendar/remove/:eventid', (req, res) => 
+  { eventsCalendarController.deleteEvent(req, res, db) });
 
 
 app.listen(3000, () => {
