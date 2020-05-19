@@ -14,7 +14,7 @@ class GeneralCalendar extends React.Component {
         
     }
     
-    getCurrCalendar () { return (this.props.mode === "Period" ? <PeriodCalendar></PeriodCalendar>: <EventsCalendar></EventsCalendar>)}
+    getCurrCalendar () { return (this.props.mode === "Period" ? <PeriodCalendar addInDate={this.props.addInDate}></PeriodCalendar>: <EventsCalendar addInDate={this.props.addInDate}></EventsCalendar>)}
 
     
     render() {

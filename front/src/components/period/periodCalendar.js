@@ -18,7 +18,10 @@ class PeriodCalendar extends React.Component {
         
     }
     
-    onChange = date => this.setState({ date });
+    onChange  (date) {
+      console.log(date);
+      this.props.addInDate(date);
+    } 
 
     tileClass (dateData) {
       let {activeStartDate, date, view} = dateData;

@@ -17,17 +17,16 @@ class EventsCalendar extends React.Component {
         
     }
     
-    onChange = date => this.setState({ date })
+    onChange  (date) {
+      console.log(date);
+      this.props.addInDate(date);
+    } 
 
     tileClass (dateData) {
       let {activeStartDate, date, view} = dateData;
-      console.log(activeStartDate);
-      console.log(date);
-      console.log(view);
       let dateInMonth = date.getDate();
 
       var isEventDate = (event) => {
-        console.log(event);
         return event.date === dateInMonth;
       }
 
