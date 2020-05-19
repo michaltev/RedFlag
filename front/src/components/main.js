@@ -12,6 +12,7 @@ class Main extends React.Component {
         this.state = {mode: "Period", page: "calendar"};
 
         this.changeMode = this.changeMode.bind(this);
+        this.changePage = this.changePage.bind(this);
     }
 
     changeMode () {
@@ -23,6 +24,29 @@ class Main extends React.Component {
         }
     }
 
+    changePage (pageName) {
+        console.log("main change page: " + pageName)
+        let page = pageName;
+        this.setState({page});
+    }
+
+    getCurrPage() {
+        let page;
+        switch (this.state.page) {
+            case "calendar":
+                page = <GeneralCalendar mode={this.state.mode}></GeneralCalendar>;
+                break;
+            case "infographics":
+                page = <Graphs></Graphs>
+                break;
+            case "activityLog":
+                page;
+                break;
+            default:
+                break;
+        }
+    }
+
 
     render() {
       return <div className="Main">
@@ -30,7 +54,7 @@ class Main extends React.Component {
           <button onClick={this.changeMode}>changeMode</button>
           <GeneralCalendar mode={this.state.mode}></GeneralCalendar>
           <Graphs></Graphs>
-          <GeneralFooter page={this.state.page}></GeneralFooter>
+          <GeneralFooter page={this.state.page} pageClick={this.changePage}></GeneralFooter>
       </div>
     }
   }

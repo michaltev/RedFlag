@@ -10,20 +10,25 @@ class GeneralFooter extends React.Component {
         super(props);
         
         this.state = {infographics, calendar, activityLog};
-        //this.getCurrCalendar = this.getCurrCalendar.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         
     }
     
+    handleClick (event) {
+        event.preventDefault();
+        let name = event.target.value;
+        this.props.pageClick(name);
+    }
     
 
     
     render() {
         return (
-          <div>
+          <div className="Footer-wrap">
               <img src={this.state[this.props.page]} className="Footer-image"></img>
-              <span className="Page-box">1</span>
-              <span className="Page-box">2</span>
-              <span className="Page-box">3</span>
+              <button className="Page-box Clendar-box" value="calendar" onClick={this.handleClick}></button>
+              <button className="Page-box Graphs-box" value="infographics" onClick={(e)=>this.handleClick(e)}></button>
+              <button className="Page-box Activiy-log-box" value="activityLog" onClick={this.handleClick}></button>
            
           </div>
         );

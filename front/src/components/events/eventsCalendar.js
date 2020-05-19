@@ -25,7 +25,7 @@ class EventsCalendar extends React.Component {
             <Calendar
               onChange={this.onChange}
               value={this.state.date}
-              calendarType="US"
+              calendarType="Hebrew"
             />
           </div>
         );
