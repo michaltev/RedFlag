@@ -36,4 +36,4 @@ class Moods extends React.Component {
 	}
 }
 
-export default GeneralCalendar;
+export default Moods;
