@@ -46,14 +46,13 @@ CREATE TABLE events_calendar (
     date DATE NOT NULL,
     user_id INT NOT NULL,
     mood INT NOT NULL,
-	abuse_category INT NOT NULL,
+	abuse_category integer[] NOT NULL,
 	description text,
 	insert_date TIMESTAMP NOT NULL,
 	is_delete BOOLEAN NOT NULL,
 
     foreign key (user_id) references users (id),
-    foreign key (mood) references moods (id),
-    foreign key (abuse_category) references abuse_categories (id)
+    foreign key (mood) references moods (id)
 );
 
 

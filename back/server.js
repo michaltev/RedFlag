@@ -58,6 +58,17 @@ app.post('/peroidcalendar/add', (req, res) =>
 
 // events calendar
 
+app.get('/eventscalendar/:userid/:year/:month', (req, res) => 
+  { eventsCalendarController.getEventsMonthList(req, res, db) });
+
+app.get('/eventscalendar/:eventid', (req, res) => 
+  { eventsCalendarController.getEvent(req, res, db) });
+
+app.post('/eventscalendar/add', (req, res) => 
+  { eventsCalendarController.addEvent(req, res, db) });
+
+app.delete('/eventscalendar/remove/:eventid', (req, res) => 
+  { eventsCalendarController.deleteEvent(req, res, db) });
 
 
 app.listen(3000, () => {
