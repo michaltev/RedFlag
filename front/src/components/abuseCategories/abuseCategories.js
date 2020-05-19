@@ -1,16 +1,30 @@
 import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class AbuseCategories extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.state = {
-			parentCategories: props.parentCategories,
+			parentCategories: [],
 			subCategories: [],
 			chosenParentCategory: -1,
 			chosenSubCategories: []
 		};
-	}
+	};
+
+	componentDidMount(){
+	fetch('http://localhost:3000/abusecategories', {
+	          method: 'get',
+	          headers: {'Content-Type':'application/json'}
+        })
+    .then(response => response.json())
+    .then(data => {
+        	this.setState({parentCategories: data});
+    	});
+  };
 
 	onParentCategoryClick = (value) => {
 		if(this.state.chosenParentCategory === value.id)
@@ -19,7 +33,7 @@ class AbuseCategories extends React.Component {
 		}
 		else 
 		{
-			displaySubCategories(value.id);
+			this.displaySubCategories(value.id);
 		}
 	}
 
@@ -31,7 +45,7 @@ class AbuseCategories extends React.Component {
         .then(response => response.json())
         .then(data => {
         	this.setState({
-        		chosenParentCategory: value,
+        		chosenParentCategory: parentCategoryID,
         		subCategories : data})
         });
 	}
@@ -60,26 +74,36 @@ class AbuseCategories extends React.Component {
 		          	if(this.state.chosenParentCategory === parentCategory.id)
 		          	{
 		          		return (
-			              <div>
-			              	<p onClick={this.onParentCategoryClick}> 
+			              <div key={parentCategory.id}>
+			              	<p
+			              		onClick={() => this.onParentCategoryClick(parentCategory)}> 
 			              		{parentCategory.value}
 			              	</p>
-			              </div>
 
-			              this.state.subCategories.map((subCategory, i) => {
-		              		<Checkbox
-						        checked={this.state.chosenSubCategories.includes(subCategory.id)}
-						        onChange={this.onSubCategoryClick}
-						        inputProps={{ 'aria-label': 'primary checkbox' }}
-						      />
-			              })
+			              	<div>
+			              	{
+					              this.state.subCategories.map((subCategory, i) => {
+				              		return (
+			              				<FormGroup row key={subCategory.id}>
+										      <FormControlLabel
+										        control={<Checkbox 
+										        			checked={this.state.chosenSubCategories.includes(subCategory.id)}
+										        			onChange={this.onSubCategoryClick}
+										        			name={subCategory.value} />}
+										        label={subCategory.value}
+										      />
+									    </FormGroup>)
+					              })
+				            }
+				            </div>
+			              </div>
 			            );
 		          	}
 		          	else
 		          	{
 			            return (
-			              <div>
-			              	<p onClick={this.onParentCategoryClick}> 
+			              <div key={parentCategory.id}>
+			              	<p onClick={() => this.onParentCategoryClick(parentCategory)}> 
 			              		{parentCategory.value}
 			              	</p>
 			              </div>
@@ -93,4 +117,4 @@ class AbuseCategories extends React.Component {
 	}
 }
 
-export default Moods;
+export default AbuseCategories;
