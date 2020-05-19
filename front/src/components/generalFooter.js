@@ -20,7 +20,11 @@ class GeneralFooter extends React.Component {
     render() {
         return (
           <div>
-           <img src={this.state[this.props.page]} className="Footer-image"></img>
+              <img src={this.state[this.props.page]} className="Footer-image"></img>
+              <span className="Page-box">1</span>
+              <span className="Page-box">2</span>
+              <span className="Page-box">3</span>
+           
           </div>
         );
     }

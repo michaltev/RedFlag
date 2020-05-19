@@ -19,7 +19,7 @@ class GeneralCalendar extends React.Component {
     
     render() {
         return (
-          <div>
+          <div className="General-calendar">
             {this.getCurrCalendar()}
           </div>
         );
