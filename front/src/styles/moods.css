@@ -17,3 +17,7 @@
 	/* identical to box height */
 	color: #384D48;
 }
+
+.chosen {
+	font-weight: bold;
+}

@@ -3,11 +3,17 @@ import '../../styles/moods.css';
 
 class SingleMood extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state = {};
+	}
+
   render(){
     return (
-      <div className="item">
+      <div className="item"
+      		onClick={() => this.props.onClick(this.props.mood.id)}>
         <img alt='mood' src={require(`../../images/moods/${this.props.mood.value}.svg`)}/> 
-        <p className="moodtitle"> {this.props.mood.value} </p>
+        <p className={this.props.isChosen ? "moodtitle chosen" : "moodtitle"}> {this.props.mood.value} </p>
       </div>
     );
   }

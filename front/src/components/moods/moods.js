@@ -39,6 +39,7 @@ class Moods extends React.Component {
 		              <SingleMood
 		                key={i} 
 		                mood={mood} 
+	                	isChosen={mood.id==this.state.chosenMood}
 		                onClick={this.onMoodChoose}
 		                />
 		            );
