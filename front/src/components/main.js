@@ -40,7 +40,7 @@ class Main extends React.Component {
                 page = <Graphs></Graphs>
                 break;
             case "activityLog":
-                page;
+                page = <div>this will be activity log</div>
                 break;
             default:
                 break;
