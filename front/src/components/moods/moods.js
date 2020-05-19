@@ -29,6 +29,7 @@ class Moods extends React.Component {
 	render(){
 		return (
 			<div>
+				<h2> Mood </h2>
 				<div>
 		        {
 		          this.state.moods.map((mood, i) => {

@@ -68,6 +68,7 @@ class AbuseCategories extends React.Component {
 	render(){
 		return (
 			<div>
+				<h2> Behaviors/Incidents </h2>
 				<div>
 		        {
 		          this.state.parentCategories.map((parentCategory, i) => {
@@ -82,18 +83,18 @@ class AbuseCategories extends React.Component {
 
 			              	<div>
 			              	{
-					              this.state.subCategories.map((subCategory, i) => {
-				              		return (
-			              				<FormGroup row key={subCategory.id}>
-										      <FormControlLabel
-										        control={<Checkbox 
-										        			checked={this.state.chosenSubCategories.includes(subCategory.id)}
-										        			onChange={this.onSubCategoryClick}
-										        			name={subCategory.value} />}
-										        label={subCategory.value}
-										      />
-									    </FormGroup>)
-					              })
+				              this.state.subCategories.map((subCategory, i) => {
+			              		return (
+		              				<FormGroup row key={subCategory.id}>
+									      <FormControlLabel
+									        control={<Checkbox 
+									        			checked={this.state.chosenSubCategories.includes(subCategory.id)}
+									        			onChange={() => this.onSubCategoryClick(subCategory)}
+									        			name={subCategory.value} />}
+									        label={subCategory.value}
+									      />
+								    </FormGroup>)
+				              })
 				            }
 				            </div>
 			              </div>
