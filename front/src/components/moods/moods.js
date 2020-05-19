@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleMood from './singleMood';
+import './moods.css';
 
 class Moods extends React.Component {
 
@@ -30,11 +31,12 @@ class Moods extends React.Component {
 		return (
 			<div>
 				<h2> Mood </h2>
-				<div>
+				<div className="container">
 		        {
 		          this.state.moods.map((mood, i) => {
 		            return (
 		              <SingleMood
+		              	className="item"
 		                key={i} 
 		                mood={mood} 
 		                onClick={this.onMoodChoose}
