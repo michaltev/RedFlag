@@ -25,3 +25,11 @@
 .Event-digital {
     background-color: rgb(0, 175, 250) !important; 
 }
+
+.Period-date {
+    background-color: rgba(255, 79, 121, 0.5) !important; 
+}
+
+.Ovulation-date {
+    background-color: rgba(114, 9, 183, 0.4) !important; 
+}

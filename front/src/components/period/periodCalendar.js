@@ -9,13 +9,40 @@ class PeriodCalendar extends React.Component {
         super(props);
         
         this.onChange = this.onChange.bind(this);
+        this.tileClass = this.tileClass.bind(this);
         this. state = {
-            date: new Date()
+            date: new Date(),
+            periodDates : [12,13,14,15,16],
+            ovulationDates : [22,23,24,25]
         }
         
     }
     
-    onChange = date => this.setState({ date })
+    onChange = date => this.setState({ date });
+
+    tileClass (dateData) {
+      let {activeStartDate, date, view} = dateData;
+      console.log(activeStartDate);
+      console.log(date);
+      console.log(view);
+      let dateInMonth = date.getDate();
+
+      if (view === 'month')
+      {
+        let period = this.state.periodDates.indexOf(dateInMonth);
+        let ovulation = this.state.ovulationDates.indexOf(dateInMonth);
+        if (period !== -1) {
+          return "Period-date";
+        }
+
+        if (ovulation !== -1) {
+          return "Ovulation-date";
+        }
+
+        return "";
+
+      }
+    }
 
     render() {
         return (
@@ -25,6 +52,7 @@ class PeriodCalendar extends React.Component {
               onChange={this.onChange}
               value={this.state.date}
               calendarType="Hebrew"
+              tileClassName={this.tileClass}
             />
           </div>
         );
