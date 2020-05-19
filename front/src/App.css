@@ -17,3 +17,13 @@
   color: #384D48;
   font: 'Muli';
 }
+
+.add-card-titles{
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #384D48;
+}

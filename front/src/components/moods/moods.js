@@ -1,6 +1,7 @@
 import React from 'react';
 import SingleMood from './singleMood';
-import './moods.css';
+import '../../styles/moods.css';
+import '../../App.css';
 
 class Moods extends React.Component {
 
@@ -30,13 +31,12 @@ class Moods extends React.Component {
 	render(){
 		return (
 			<div>
-				<h2> Mood </h2>
+				<h2 className="add-card-titles"> Mood </h2>
 				<div className="container">
 		        {
 		          this.state.moods.map((mood, i) => {
 		            return (
 		              <SingleMood
-		              	className="item"
 		                key={i} 
 		                mood={mood} 
 		                onClick={this.onMoodChoose}
