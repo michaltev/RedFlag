@@ -2,6 +2,7 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import '../../App.css';
 
 class AbuseCategories extends React.Component {
 
@@ -68,7 +69,7 @@ class AbuseCategories extends React.Component {
 	render(){
 		return (
 			<div>
-				<h2> Behaviors/Incidents </h2>
+				<p className="add-card-titles"> Behaviors/Incidents </p>
 				<div>
 		        {
 		          this.state.parentCategories.map((parentCategory, i) => {
@@ -76,17 +77,17 @@ class AbuseCategories extends React.Component {
 		          	{
 		          		return (
 			              <div key={parentCategory.id}>
-			              	<p
+			              	<p className="add-card-subtitles"
 			              		onClick={() => this.onParentCategoryClick(parentCategory)}> 
 			              		{parentCategory.value}
 			              	</p>
 
-			              	<div>
+			              	<div className="paddingLeft20">
 			              	{
 				              this.state.subCategories.map((subCategory, i) => {
 			              		return (
 		              				<FormGroup row key={subCategory.id}>
-									      <FormControlLabel
+									      <FormControlLabel className="add-card-options"
 									        control={<Checkbox 
 									        			checked={this.state.chosenSubCategories.includes(subCategory.id)}
 									        			onChange={() => this.onSubCategoryClick(subCategory)}
@@ -104,7 +105,8 @@ class AbuseCategories extends React.Component {
 		          	{
 			            return (
 			              <div key={parentCategory.id}>
-			              	<p onClick={() => this.onParentCategoryClick(parentCategory)}> 
+			              	<p className="add-card-subtitles"
+			              	   onClick={() => this.onParentCategoryClick(parentCategory)}> 
 			              		{parentCategory.value}
 			              	</p>
 			              </div>
