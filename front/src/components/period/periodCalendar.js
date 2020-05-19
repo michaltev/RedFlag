@@ -10,15 +10,13 @@ class PeriodCalendar extends React.Component {
         
         this.onChange = this.onChange.bind(this);
         this. state = {
-            date: new Date(2020, 4, 20)
+            date: new Date()
         }
         
     }
     
     onChange = date => this.setState({ date })
 
-    //formatWeekDay = (locale, date) => {console.log(date); return date.toString();}
-    
     render() {
         return (
           <div>
@@ -26,9 +24,7 @@ class PeriodCalendar extends React.Component {
             <Calendar
               onChange={this.onChange}
               value={this.state.date}
-              calendarType="Hebrew"
-              activeStartDate={this.state.date}
-              //formatShortWeekday={this.formatWeekDay}
+              calendarType="US"
             />
           </div>
         );

@@ -1,0 +1,9 @@
+.General-calendar {
+    width: 100%;
+}
+
+.General-calendar .react-calendar {
+    background-color: #FFFAFA;
+    border: none;
+    width: 100%;
+}

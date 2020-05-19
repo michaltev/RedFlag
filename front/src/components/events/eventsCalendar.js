@@ -17,7 +17,6 @@ class EventsCalendar extends React.Component {
     
     onChange = date => this.setState({ date })
 
-    //formatWeekDay = (locale, date) => {console.log(date); return date.toString();}
     
     render() {
         return (
@@ -26,8 +25,7 @@ class EventsCalendar extends React.Component {
             <Calendar
               onChange={this.onChange}
               value={this.state.date}
-              calendarType="Hebrew"
-              //formatShortWeekday={this.formatWeekDay}
+              calendarType="US"
             />
           </div>
         );

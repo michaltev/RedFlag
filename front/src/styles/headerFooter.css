@@ -1,3 +1,11 @@
 .Footer-image {
-    width: 375px;
+    width: 100%;
+    position: absolute;
+}
+.Page-box {
+    width: 33%;
+    height: 30px;
+    border-width: 2px;
+    display: inline-block;
+    position: relative;
 }
