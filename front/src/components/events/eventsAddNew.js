@@ -30,7 +30,7 @@ class EventsAddNew extends React.Component {
 
 		if(this.state.abuseCategories.includes(p_abuseCategoryID))
 		{
-			lstTempCategories = lstTempCategories.filter(id => id === p_abuseCategoryID);
+			lstTempCategories = lstTempCategories.filter(id => id !== p_abuseCategoryID);
 		}
 		else
 		{
@@ -44,8 +44,10 @@ class EventsAddNew extends React.Component {
       return <div>
           <h2 className="Head-text">this is events add new</h2>  
 
-          <Moods chosenMood={this.state.mood} onChooseMood={this.setMood}/>
-          <AbuseCategories/>
+          <Moods chosenMood={this.state.mood} 
+          		 onChooseMood={this.setMood}/>
+          <AbuseCategories chosenSubCategories={this.state.abuseCategories} 
+          				   onSubCategoryClick={this.handleAbuseCategoryClick}/>
           <Media />
           <Notes />  
 

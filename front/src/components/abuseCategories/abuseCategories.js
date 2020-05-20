@@ -51,21 +51,6 @@ class AbuseCategories extends React.Component {
         });
 	}
 
-	onSubCategoryClick = (value) => {
-		let lstTempCategories = this.state.chosenSubCategories;
-
-		if(this.state.chosenSubCategories.includes(value.id))
-		{
-			lstTempCategories = lstTempCategories.filter(id => id === value.id);
-		}
-		else
-		{
-			lstTempCategories.push(value.id);
-		}
-
-		this.setState({chosenSubCategories : lstTempCategories});
-	}
-
 	render(){
 		return (
 			<div>
@@ -89,8 +74,8 @@ class AbuseCategories extends React.Component {
 		              				<FormGroup row key={subCategory.id}>
 									      <FormControlLabel className="add-card-options"
 									        control={<Checkbox 
-									        			checked={this.state.chosenSubCategories.includes(subCategory.id)}
-									        			onChange={() => this.onSubCategoryClick(subCategory)}
+									        			checked={this.props.chosenSubCategories.includes(subCategory.id)}
+									        			onChange={() => this.props.onSubCategoryClick(subCategory.id)}
 									        			name={subCategory.value} />}
 									        label={subCategory.value}
 									      />
