@@ -43,6 +43,7 @@ const addEvent = (req, res, db) => {
 	    insert_date: db.fn.now(),
 	    is_delete: false
 		})
+	.returning('*')
 	.then(events => { res.json(events[0]); })
 	.catch(error => {res.status(400).json('error adding the event')});
 };
