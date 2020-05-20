@@ -17,7 +17,7 @@ class EventsAddNew extends React.Component {
 			mood:"",
 			description:"",
 			date:"",
-			userID:""
+			userID:1
 		};
 	}
 
@@ -40,6 +40,10 @@ class EventsAddNew extends React.Component {
 		this.setState({abuseCategories : lstTempCategories});
 	}
 
+	onSave = () => {
+
+	}
+
     render() {
       return <div>
           <h2 className="Head-text">this is events add new</h2>  
@@ -51,7 +55,7 @@ class EventsAddNew extends React.Component {
           <Media />
           <Notes />  
 
-          <input  type="button"className="savebutton" value="Save" />     
+          <input  type="button"className="savebutton" value="Save" onClick={this.onSave} />     
       </div>
     }
   }
