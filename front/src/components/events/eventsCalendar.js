@@ -49,10 +49,17 @@ class EventsCalendar extends React.Component {
       }
     }
 
-    getViewData(month, year)
+    getViewData(p_month, p_year)
     {
+      fetch(`http://localhost:3000//eventscalendar/1/${p_year}/${p_month}`, {
+            method: 'get',
+            headers: {'Content-Type':'application/json'}
+        })
+      .then(response => response.json())
+      .then(data => {
+          this.setState({eventList: data});
+      });
       //fetch().then (eventList => this.setState({eventList}))
-      console.log("fetching for " + month + "." + year );
     }
     
 
