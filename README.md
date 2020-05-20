@@ -22,11 +22,15 @@ phone.
 ## Key Features
 
 **Security:** User should be able to get in and out of the relationship tracker safely and easily.
+
 **Recording events:**  User should be able to record distressing events in a way that doesn’t
 exacerbate the situation. User should be able to view activity log for personal and legal use.
+
 **Negative patterns:**  User should be able to recognize emerging patterns. System should be able
 to notify user of patterns the user may have dismissed.
+
 **Help:** System should be able to recognize and offer direct access to social services.
+
 **Women’s health:** User should be able to use tracker in women’s health tracker mode as well
 
 ## Vision & Impact
