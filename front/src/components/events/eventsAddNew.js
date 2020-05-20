@@ -41,6 +41,24 @@ class EventsAddNew extends React.Component {
 	}
 
 	onSave = () => {
+		fetch('http://localhost:3000/eventscalendar/add', {
+			method: 'post',
+			headers: {'Content-Type':'application/json'},
+			body: JSON.stringify({
+				userID: 1,
+				date: this.state.date,
+				mood: this.state.mood,
+				abuseCategories: this.state.abuseCategories,
+				description: this.state.description
+			})
+		})
+		.then(response => response.json())
+		.then(user => {
+			if(user.id){
+				this.props.loadUser(user);
+				this.setState({favbandid: user.favbandid, favbandname:user.favbandname, hasfavband:true});
+			}
+		});
 
 	}
 
