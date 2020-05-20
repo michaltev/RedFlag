@@ -1,3 +1,4 @@
+![Red Flag Logo](/front/src/images/logo.svg "Red Flag") 
 # Red Flag - Michal Sela Forum Hackathon
 
 ## Scope and Focus
