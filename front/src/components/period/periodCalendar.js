@@ -10,12 +10,35 @@ class PeriodCalendar extends React.Component {
         
         this.onChange = this.onChange.bind(this);
         this.tileClass = this.tileClass.bind(this);
+        this.onViewChange = this.onViewChange.bind(this);
+        this.getViewData = this.getViewData.bind(this);
         this. state = {
             date: new Date(),
             periodDates : [12,13,14,15,16],
             ovulationDates : [22,23,24,25]
         }
         
+    }
+
+    componentDidMount(){
+      let now = new Date();
+      this.getViewData(now.getMonth(), now.getFullYear())
+    }
+
+    getViewData(month, year)
+    {
+      //fetch().then (eventList => this.setState({eventList}))
+      console.log("fetching for " + month + "." + year );
+    }
+
+    onViewChange ({ activeStartDate, view }) {
+      console.log(activeStartDate);
+      console.log(view);
+      if (view === "month")
+      {
+        this.getViewData(activeStartDate.getMonth(), activeStartDate.getFullYear())
+      }
+
     }
     
     onChange  (date) {
@@ -25,9 +48,6 @@ class PeriodCalendar extends React.Component {
 
     tileClass (dateData) {
       let {activeStartDate, date, view} = dateData;
-      console.log(activeStartDate);
-      console.log(date);
-      console.log(view);
       let dateInMonth = date.getDate();
 
       if (view === 'month')
@@ -56,6 +76,8 @@ class PeriodCalendar extends React.Component {
               value={this.state.date}
               calendarType="Hebrew"
               tileClassName={this.tileClass}
+              onActiveStartDateChange={this.onViewChange}
+              onViewChange={this.onViewChange}
             />
           </div>
         );

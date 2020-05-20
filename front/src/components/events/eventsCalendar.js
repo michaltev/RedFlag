@@ -10,11 +10,18 @@ class EventsCalendar extends React.Component {
         
         this.onChange = this.onChange.bind(this);
         this.tileClass = this.tileClass.bind(this);
+        this.onViewChange = this.onViewChange.bind(this);
+        this.getViewData = this.getViewData.bind(this);
         this. state = {
             date: new Date(),
             eventList : [{date:2, type:"physical"}, {date:4, type:"mental"}, {date:10, type:"verbal"}, {date:12, type:"digital"}, {date:16, type:"verbal"}, {date:18, type:"mental"}]
         };
         
+    }
+
+    componentDidMount(){
+      let now = new Date();
+      this.getViewData(now.getMonth(), now.getFullYear())
     }
     
     onChange  (date) {
@@ -41,11 +48,23 @@ class EventsCalendar extends React.Component {
 
       }
     }
+
+    getViewData(month, year)
+    {
+      //fetch().then (eventList => this.setState({eventList}))
+      console.log("fetching for " + month + "." + year );
+    }
     
 
-    // onViewChange () {
+    onViewChange ({ activeStartDate, view }) {
+      console.log(activeStartDate);
+      console.log(view);
+      if (view === "month")
+      {
+        this.getViewData(activeStartDate.getMonth(), activeStartDate.getFullYear())
+      }
 
-    // }
+    }
 
     render() {
         return (
@@ -56,6 +75,8 @@ class EventsCalendar extends React.Component {
               value={this.state.date}
               calendarType="Hebrew"
               tileClassName={this.tileClass}
+              onActiveStartDateChange={this.onViewChange}
+              onViewChange={this.onViewChange}
             />
           </div>
         );
